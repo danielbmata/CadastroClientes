@@ -11,6 +11,9 @@ from django.contrib import messages
 
 
 def index(request):
+    return render(request, 'contatos/index.html')
+
+def index_contatos(request):
     # Serão exibidos em ordem alfabetica dos nomes e so os que estiverem marcado como publicado:
     contatos = Contato.objects.order_by('nome').filter(publicado=True)
     # Criando uma paginação, 10 contatos por pagina:
@@ -20,7 +23,7 @@ def index(request):
     #
     contatos = paginator.get_page(page)
 
-    return render(request, 'contatos/index.html', {
+    return render(request, 'contatos/index_contatos.html', {
                  'contatos': contatos
                   })
 
